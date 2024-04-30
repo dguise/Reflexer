@@ -1,0 +1,1 @@
+- Godot client: https://github.com/GodotSteam/GodotSteam/releases/tag/v4.7-mp
