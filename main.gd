@@ -14,14 +14,13 @@ func _ready():
 func spawn_level(data):
 	var level = (load(data) as PackedScene).instantiate()
 	return level
-
+	
 func _on_host_pressed():
 	peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC)
 	multiplayer.multiplayer_peer = peer
 	ms.spawn("res://level.tscn")
 	$Host.hide()
 	$ScrollContainer/VBoxContainer.hide()
-	
 
 func join_lobby(id):
 	peer.connect_lobby(id)
