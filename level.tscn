@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://chgwcq8kt1rlj"]
+
+[ext_resource type="Script" path="res://MultiplayerSpawner.gd" id="1_wcixq"]
+[ext_resource type="PackedScene" uid="uid://7ivv7yaf7red" path="res://player.tscn" id="2_nchke"]
+
+[node name="Level" type="Node"]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath(".")
+script = ExtResource("1_wcixq")
+playerScene = ExtResource("2_nchke")
