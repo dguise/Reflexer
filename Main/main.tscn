@@ -21,7 +21,7 @@ offset_left = 145.0
 offset_top = 230.0
 offset_right = 258.0
 offset_bottom = 286.0
-text = "Refresh"
+text = "Refresh!"
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://Projectile/Projectile.tscn", "res://Player/player.tscn")
