@@ -24,7 +24,7 @@ offset_bottom = 286.0
 text = "Refresh!"
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://Projectile/Projectile.tscn", "res://Player/player.tscn")
+_spawnable_scenes = PackedStringArray("res://Projectile/Projectile.tscn")
 spawn_path = NodePath("..")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]

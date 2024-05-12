@@ -10,6 +10,9 @@ func _ready():
 	cam.enabled = is_multiplayer_authority()
 	
 func _input(event):
+	if !is_multiplayer_authority():
+		return
+		
 	var shoot = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
 	
 	if shoot && event is InputEventMouseButton:
@@ -20,10 +23,13 @@ func _input(event):
 		
 		b.rotation_degrees = rotation_degrees
 		b.global_position = global_position	+ dir * 70
-		var main = $/root/main
-		main.add_child(b)
+		spawn_projectile.rpc(b)
 		
 	
+@rpc("any_peer")
+func spawn_projectile(proj):
+	var main = $/root/main
+	main.add_child(proj)
 
 func _physics_process(delta):
 	if !is_multiplayer_authority():
