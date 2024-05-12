@@ -20,13 +20,16 @@ func _on_host_pressed():
 	multiplayer.multiplayer_peer = peer
 	ms.spawn("res://level.tscn")
 	$Host.hide()
+	$Refresh.hide()
 	$ScrollContainer/VBoxContainer.hide()
 
 func join_lobby(id):
 	peer.connect_lobby(id)
 	multiplayer.multiplayer_peer = peer
 	lobby_id = id
+	print(str(id) + " joined")
 	$Host.hide()
+	$Refresh.hide()
 	$ScrollContainer/VBoxContainer.hide()
 	
 func _on_lobby_created(connect, id):
@@ -43,6 +46,9 @@ func open_lobby_list():
 func _on_lobby_match_list(lobbies):
 	for lobby in lobbies:
 		var lobby_name = Steam.getLobbyData(lobby, "name")
+		if !lobby_name.ends_with("gamer lobby"):
+			continue
+			
 		var members = Steam.getNumLobbyMembers(lobby)
 		
 		var btn = Button.new()
@@ -51,3 +57,12 @@ func _on_lobby_match_list(lobbies):
 		btn.connect("pressed", Callable(self, "join_lobby").bind(lobby))
 		
 		$ScrollContainer/VBoxContainer.add_child(btn)
+
+
+func _on_refresh_pressed():
+	open_lobby_list()
+	var explosion = preload("res://Explosion.tscn").instantiate() as GPUParticles2D
+	$Refresh.add_child(explosion)
+	explosion.global_position = get_global_mouse_position()
+	explosion.restart()
+	

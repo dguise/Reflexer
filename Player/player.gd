@@ -4,7 +4,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 @onready var cam = $Camera2D
 var BULLET = preload("res://Projectile/Projectile.tscn")
-var hp = 2;
+var hp = 2
 
 func _ready():
 	cam.enabled = is_multiplayer_authority()
@@ -19,8 +19,9 @@ func _input(event):
 		var rotation_degrees = rad_to_deg(rotation_angle)
 		
 		b.rotation_degrees = rotation_degrees
-		
-		add_child(b)
+		b.global_position = global_position	+ dir * 70
+		var main = $/root/main
+		main.add_child(b)
 		
 	
 

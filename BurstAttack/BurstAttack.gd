@@ -12,7 +12,6 @@ func _ready():
 func explode():
 	visuals()
 	
-	print("explosion yeee")
 	
 	var bodies = get_overlapping_bodies()
 	
@@ -27,4 +26,3 @@ func visuals():
 	var player = get_parent() as Node2D
 	particles.emitting = true
 	get_parent().add_child(particles)
-	print("boom")

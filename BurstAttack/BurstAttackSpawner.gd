@@ -3,13 +3,12 @@ extends MultiplayerSpawner
 const COOLDOWN = 10_000 # ms
 var next_cast = 0
 
-var burst_attack = preload("res://BurstAttack.tscn")
+var burst_attack = preload("res://BurstAttack/BurstAttack.tscn")
 
 func _process(delta):
 	var input = Input.is_key_pressed(KEY_Q)
 	
 	if input && Time.get_ticks_msec() > next_cast:
-		print("exploding")
 		next_cast = Time.get_ticks_msec() + COOLDOWN
 		spawn(burst_attack)
 

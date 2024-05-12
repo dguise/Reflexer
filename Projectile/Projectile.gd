@@ -1,6 +1,11 @@
 extends Area2D
 
-const SPEED = 300
+const SPEED = 500
+
+func _ready():
+	await get_tree().create_timer(2).timeout
+	queue_free()
+
 
 func _process(delta):
 	position += Vector2.RIGHT.rotated(rotation) * SPEED * delta
